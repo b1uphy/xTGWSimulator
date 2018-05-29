@@ -1,4 +1,14 @@
-#Echo client program
+#!/usr/bin/python
+# -*- coding: utf8 -*-
+'''
+contact:
+bluphy@qq.com
+@author: bluphy
+Created on 2018-5-29 10:55:20
+This is a tbox simulator for help developing the TSP simulator.
+
+
+'''
 import socket,time
 
 #HOST = 'server.natappfree.cc'    # The remote host
@@ -17,13 +27,12 @@ def responseCtrl_C(func):
             return None
         
     return wrapper
- 
-
 
 def createOTAmsgfromGBlog(logline):
     msg = None
     if len(logline)>63:
-        msg = bytes.fromhex(logline[45:-1])
+        data = logline.rsplit(':',1)[-1].strip()
+        msg = bytes.fromhex(data)
     return msg
 
 def playback(playback_file_descriptor):
@@ -38,7 +47,6 @@ def cmd_pb(socketinstance):
             if msg:
                 socketinstance.sendall(msg)
                 #time.sleep(1)
-
        
 def main():
     while True:
@@ -59,17 +67,20 @@ def main():
                     elif 'logout' == cmd2:
                         pass
                         
-                    elif 'rt' == cmd2:
+                    elif 'rt' == cmd2: #realtime
                         pass
                         
-                    elif 'bf' == cmd2:
+                    elif 'bf' == cmd2: #bufa
                         pass
                         
-                    elif 'bj' == cmd2:
+                    elif 'bj' == cmd2: 
                         pass
                         
-                    elif 'pb' == cmd2:
-                        cmd_pb(s)         
+                    elif 'pb' == cmd2: 
+                        cmd_pb(s)
+
+                    elif 'hb' == cmd2: #heartbeat
+                        pass         
                             
                     else:
                         s.sendall((cmd2+'\n').encode('utf8'))
