@@ -19,7 +19,8 @@ from  xTSPSimulator.xOTAGB import calBCCChk, createOTAGBMsg, genGBTime
 #### <Config>
 #HOST = 'server.natappfree.cc'    # The remote host
 #HOST = '47.90.92.56'
-HOST = '127.0.0.1'
+# HOST = '127.0.0.1'
+HOST = '192.168.1.14'
 PORT = 9201             # The same port as used by the server
 
 #PLAYBACK_FILE_PATH = 'D:\\bluphy\\Desktop\\bw_gb32960_test.log'
